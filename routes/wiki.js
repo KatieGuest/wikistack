@@ -3,10 +3,12 @@ const router = express.Router();
 //const addPageP = require('../views/addPage')
 // const showPage = require('../views/wikipage')
 const { Page } = require("../models");
-const { addPage, wikiPage } = require("../views");
+const { addPage, wikiPage, main } = require("../views");
 
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
+  const allPages = await Page.findAll()
+  console.log('all pages are:', allPages)
   res.send('/');
 })
 
